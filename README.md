@@ -1,25 +1,25 @@
 # Share to Notes · 分享到备忘录
 
-一个 Chrome 扩展：把当前网页或链接分享到 macOS **备忘录 (Notes)**，效果与 Safari 的「分享 → 备忘录」完全一致——备忘录会自动生成带标题、缩略图和域名的网页预览卡片。
+**English** | [简体中文](README.zh-CN.md)
 
-A Chrome extension that shares the current page (or any link) to macOS Notes through the same system share extension Safari uses, so Notes creates its rich link preview card.
+A Chrome extension that shares the current page (or any link) to **Apple Notes** on macOS, just like Safari's *Share → Notes*. Notes builds its rich link preview card with the page title, thumbnail and domain.
 
-## 原理
+## How it works
 
-Chrome 扩展无法直接调用 macOS 分享菜单，所以分两部分：
+A Chrome extension can't open the macOS share menu by itself, so the project has two parts:
 
 ```
-Chrome 扩展 ──native messaging──▶ ShareToNotes.app ──NSSharingService──▶ 备忘录分享面板
- (extension/)                      (host/main.swift)   com.apple.Notes.SharingExtension
+Chrome extension ──native messaging──▶ ShareToNotes.app ──NSSharingService──▶ Notes share panel
+ (extension/)                           (host/main.swift)   com.apple.Notes.SharingExtension
 ```
 
-1. 扩展把网页 URL 通过 [Native Messaging](https://developer.chrome.com/docs/extensions/develop/concepts/native-messaging) 发给本地的 `ShareToNotes.app`。
-2. 辅助程序以独立进程调用系统的备忘录分享扩展（与 Safari 相同），弹出备忘录面板，可选择文件夹、添加文字后存储。
-3. 预览卡片由备忘录自行抓取生成。
+1. The extension sends the page URL to the local `ShareToNotes.app` via [Native Messaging](https://developer.chrome.com/docs/extensions/develop/concepts/native-messaging).
+2. The helper runs as a separate process and opens the system Notes share extension (the same one Safari uses). In the Notes panel you can pick a folder, add text and save.
+3. Notes fetches the page itself and generates the preview card.
 
-## 安装
+## Install
 
-需要 macOS 12+ 和 Xcode Command Line Tools（提供 `swiftc`：`xcode-select --install`）。
+Requires macOS 12+ and the Xcode Command Line Tools for `swiftc` (`xcode-select --install`).
 
 ```bash
 git clone https://github.com/chenkaitech/chrome-share-to-notes.git
@@ -27,41 +27,41 @@ cd chrome-share-to-notes
 ./install.sh
 ```
 
-`install.sh` 会编译并安装 `~/Applications/ShareToNotes.app`，并为 Chrome（以及已安装的 Chrome Beta/Canary、Chromium、Edge、Brave、Arc）注册 native messaging host。
+`install.sh` builds and installs `~/Applications/ShareToNotes.app` and registers the native messaging host for Chrome. It also registers Chrome Beta/Canary, Chromium, Edge, Brave and Arc if they are installed.
 
-然后在 Chrome 打开 `chrome://extensions`，开启「开发者模式」，点「加载已解压的扩展程序」，选择仓库里的 `extension` 文件夹。
+Then open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and choose the repo's `extension` folder.
 
-> 扩展 ID 由 `manifest.json` 中的 `key` 固定为 `bgbbbhjmdfilodloihdblkchenonacjb`，与 host 清单的 `allowed_origins` 对应。如果你修改了 `key`，需同步更新 `tools/extension-id.txt` 并重新运行 `install.sh`。
+> The `key` in `manifest.json` pins the extension ID to `bgbbbhjmdfilodloihdblkchenonacjb`, which matches `allowed_origins` in the host manifest. If you change the `key`, update `tools/extension-id.txt` and run `install.sh` again.
 
-## 使用
+## Usage
 
-- 点击工具栏上的扩展图标，或按 **⌥⇧N**
-- 在网页空白处右键 →「分享此网页到备忘录」
-- 在链接上右键 →「分享此链接到备忘录」
+- Click the extension's toolbar icon, or press **⌥⇧N**
+- Right-click a page → **分享此网页到备忘录** (Share this page to Notes)
+- Right-click a link → **分享此链接到备忘录** (Share this link to Notes)
 
-图标出现绿色 ✓ 表示已发送给辅助程序；红色 ! 表示失败，鼠标悬停在图标上可查看原因（通常是没有运行 `install.sh`）。只支持 http/https 网页。
+A green ✓ on the icon means the link reached the helper. A red ! means it failed; hover over the icon to see why (usually `install.sh` hasn't been run). Only http/https pages are supported.
 
-## 卸载
+## Uninstall
 
 ```bash
 ./uninstall.sh
 ```
 
-再到 `chrome://extensions` 移除扩展即可。
+Then remove the extension from `chrome://extensions`.
 
-## 目录结构
+## Project layout
 
 ```
-extension/          Chrome 扩展 (Manifest V3)
+extension/          Chrome extension (Manifest V3)
   manifest.json
   background.js
   icons/
 host/
-  main.swift        native messaging host + 分享面板辅助程序
+  main.swift        native messaging host + share panel helper
   Info.plist
 tools/
-  extension-id.txt  固定的扩展 ID（install.sh 使用）
-  make-icons.swift  生成扩展图标
+  extension-id.txt  fixed extension ID (used by install.sh)
+  make-icons.swift  generates the extension icons
 install.sh / uninstall.sh
 ```
 
