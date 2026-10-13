@@ -22,7 +22,7 @@ Chrome 扩展 ──native messaging──▶ ShareToNotes.app ──NSSharingSe
 需要 macOS 12+ 和 Xcode Command Line Tools（提供 `swiftc`：`xcode-select --install`）。
 
 ```bash
-git clone https://github.com/<you>/chrome-share-to-notes.git
+git clone https://github.com/chenkaitech/chrome-share-to-notes.git
 cd chrome-share-to-notes
 ./install.sh
 ```
