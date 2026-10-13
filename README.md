@@ -36,8 +36,10 @@ Then open `chrome://extensions`, turn on **Developer mode**, click **Load unpack
 ## Usage
 
 - Click the extension's toolbar icon, or press **⌥⇧N**
-- Right-click a page → **分享此网页到备忘录** (Share this page to Notes)
-- Right-click a link → **分享此链接到备忘录** (Share this link to Notes)
+- Right-click a page → **Share This Page to Notes**
+- Right-click a link → **Share This Link to Notes**
+
+The extension UI follows Chrome's language: Simplified Chinese for `zh-CN`, English otherwise.
 
 A green ✓ on the icon means the link reached the helper. A red ! means it failed; hover over the icon to see why (usually `install.sh` hasn't been run). Only http/https pages are supported.
 
@@ -55,6 +57,7 @@ Then remove the extension from `chrome://extensions`.
 extension/          Chrome extension (Manifest V3)
   manifest.json
   background.js
+  _locales/         en and zh_CN strings
   icons/
 host/
   main.swift        native messaging host + share panel helper

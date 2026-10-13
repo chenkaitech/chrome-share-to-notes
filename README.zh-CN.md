@@ -39,6 +39,8 @@ cd chrome-share-to-notes
 - 在网页空白处右键 →「分享此网页到备忘录」
 - 在链接上右键 →「分享此链接到备忘录」
 
+插件界面跟随 Chrome 语言：简体中文环境显示中文，其他语言显示英文。
+
 图标出现绿色 ✓ 表示已发送给辅助程序；红色 ! 表示失败，鼠标悬停在图标上可查看原因（通常是没有运行 `install.sh`）。只支持 http/https 网页。
 
 ## 卸载
@@ -55,6 +57,7 @@ cd chrome-share-to-notes
 extension/          Chrome 扩展 (Manifest V3)
   manifest.json
   background.js
+  _locales/         中英文文案 (en / zh_CN)
   icons/
 host/
   main.swift        native messaging host + 分享面板辅助程序

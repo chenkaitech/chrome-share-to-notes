@@ -1,0 +1,13 @@
+{
+  "extName": { "message": "分享到备忘录" },
+  "extDescription": { "message": "把当前网页或链接分享到 macOS 备忘录，效果与 Safari 分享一致（带网页预览卡片）。" },
+  "actionTitle": { "message": "分享到备忘录" },
+  "commandDescription": { "message": "分享当前网页到备忘录" },
+  "menuSharePage": { "message": "分享此网页到备忘录" },
+  "menuShareLink": { "message": "分享此链接到备忘录" },
+  "errorUnsupportedUrl": { "message": "只能分享 http/https 网页" },
+  "errorShareFailed": {
+    "message": "分享失败：$ERROR$（是否已运行 install.sh？）",
+    "placeholders": { "error": { "content": "$1" } }
+  }
+}

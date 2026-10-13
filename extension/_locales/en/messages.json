@@ -1,0 +1,13 @@
+{
+  "extName": { "message": "Share to Notes" },
+  "extDescription": { "message": "Share the current page or any link to Apple Notes on macOS, with the same rich link preview as Safari." },
+  "actionTitle": { "message": "Share to Notes" },
+  "commandDescription": { "message": "Share the current page to Notes" },
+  "menuSharePage": { "message": "Share This Page to Notes" },
+  "menuShareLink": { "message": "Share This Link to Notes" },
+  "errorUnsupportedUrl": { "message": "Only http/https pages can be shared" },
+  "errorShareFailed": {
+    "message": "Share failed: $ERROR$ (did you run install.sh?)",
+    "placeholders": { "error": { "content": "$1" } }
+  }
+}
