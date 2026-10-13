@@ -1,0 +1,4 @@
+build/
+.DS_Store
+# Private key for packing the extension; its public half is the "key" in manifest.json.
+*.pem

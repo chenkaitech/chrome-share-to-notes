@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "分享到备忘录 (Share to Notes)",
+  "version": "1.0.0",
+  "description": "把当前网页或链接分享到 macOS 备忘录，效果与 Safari 分享一致（带网页预览卡片）。",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx0x9yEQl5704bnUYaWpYFUVx1ho8bif2TiSfrUuNL7EXFOnrtr8dbKcpSSK3dRipUdpsp5oHBJ6ffrk6bOslvALLrOn8z9LDh27MdcL0JVblZGevpEEl7w2AUAj3zuXQMGXKnPP0hLr3ZCoRAvxbV9CPIbFi2228EJqz0HkBphY4IYyhkGvhMiZL26RKZF2eqEY5lmaFKUIjPWILFgjLH02cHU5GUAlgi3Ff+I2Mc1tgpS3Wi5g/oPwmFS171ZYuDxuLlmJ8aiBtyXQbgbXhJrTaa37aW2he+rh57/82DpFCdqH9fzyDbOm1JbXnB7KcPNN11bbqVaQrjjgY8fPSDQIDAQAB",
+  "permissions": ["nativeMessaging", "contextMenus", "activeTab"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "分享到备忘录",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+N", "mac": "Alt+Shift+N" },
+      "description": "分享当前网页到备忘录"
+    }
+  }
+}
